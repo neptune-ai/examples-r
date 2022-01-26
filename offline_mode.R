@@ -17,5 +17,4 @@ neptune_log(run["other_random_training_metric"], 0.5 * i * runif(1))
 # other possible syntax
 # run["random_training_metric"]$log(0.5 * i * runif(1))
 
-# Manually sync run
-# neptune_sync(run)
+# Manually sync run from cli - neptune sync
