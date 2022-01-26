@@ -1,20 +1,23 @@
+# Import Neptune and create a Run in offline mode
 library(neptune)
 neptune_install()
 
 run <- neptune_init(project="common-r/quickstarts", api_token="ANONYMOUS", mode = "offline")
 
-# log score
-run["single_metric"] <- 0.62
+# Log hyperparameters
+parameters <- list(
+  "dense_units"= 128,
+  "activation"= "relu",
+  "dropout"= 0.23,
+  "learning_rate"= 0.15,
+  "batch_size"= 64,
+  "n_epochs"= 30
+)
+run["model/parameters"] <- parameters
 
-for(i in 1:100){
-  Sys.sleep(0.2)  # to see logging live
-  neptune_log(run["random_training_metric"], i * runif(1))
-  # other possible syntax
-  # run["random_training_metric"]$log(i * runif(1))
-}
+# Log evaluation results
+run["evaluation/accuracy"] <- eval_acc
+run["evaluation/loss"] <- eval_loss
 
-neptune_log(run["other_random_training_metric"], 0.5 * i * runif(1))
-# other possible syntax
-# run["random_training_metric"]$log(0.5 * i * runif(1))
-
-# Manually sync run from cli - neptune sync
+# Manually upload Run from command line interface:
+# neptune sync
