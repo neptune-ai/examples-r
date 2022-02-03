@@ -1,7 +1,14 @@
-# Import Neptune and create a Run
-library(neptune)
+# Install Python environment and Neptune package
+install.packages("reticulate")
+library(reticulate)
+install_miniconda()
+install.packages("neptune")
+
+# Import Neptune package and set it up
+library("neptune")
 neptune_install()
 
+# Create a tracked Run
 run <- neptune_init(project="common-r/quickstarts", api_token="ANONYMOUS")
 
 # Log hyperparameters

@@ -1,13 +1,20 @@
-library(ggplot2)
-library(plotly)
+# Install Python environment and Neptune package
+install.packages("reticulate")
+library(reticulate)
+install_miniconda()
+install.packages("neptune")
 
-# Import Neptune and create a Run
-library(neptune)
+# Import Neptune package and set it up
+library("neptune")
 neptune_install()
 
+# Create a tracked Run
 run <- neptune_init(project="common-r/quickstarts", api_token="ANONYMOUS")
 
 # Generate dummy data and create a ggplotly plot
+library(ggplot2)
+library(plotly)
+
 data <- data.frame(x = 1:25,
                    y = rnorm(25))
 
