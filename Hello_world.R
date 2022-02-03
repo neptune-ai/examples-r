@@ -1,3 +1,10 @@
+# Install Python environment
+install.packages("reticulate")
+library(reticulate)
+install_miniconda()
+
+# Install and setup Neptune package
+install.packages("neptune")
 library(neptune)
 neptune_install()
 
