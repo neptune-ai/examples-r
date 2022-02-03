@@ -1,5 +1,11 @@
+# Install Python environment and Neptune package
+install.packages("reticulate")
+library(reticulate)
+install_miniconda()
+install.packages("neptune")
+
 # Import Neptune and create a Run
-library(neptune)
+library("neptune")
 neptune_install()
 
 run <- neptune_init(project="common-r/quickstarts", api_token="ANONYMOUS")
