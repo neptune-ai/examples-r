@@ -1,4 +1,12 @@
-library(ggplot2)
+# Install Python environment and Neptune package
+install.packages("reticulate")
+library(reticulate)
+install_miniconda()
+install.packages("neptune")
+
+# Import Neptune package and set it up
+library("neptune")
+neptune_install()
 
 # Import Neptune and create a Run
 library(neptune)
@@ -8,6 +16,8 @@ run <- neptune_init(project="common-r/quickstarts", api_token="ANONYMOUS")
 
 
 # Generate dummy data and create a ggplot plot
+library(ggplot2)
+
 data <- data.frame(x = 1:25,
                    y = rnorm(25))
 
